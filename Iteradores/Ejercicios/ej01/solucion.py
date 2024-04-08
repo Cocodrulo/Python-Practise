@@ -1,4 +1,4 @@
-class StringsPrinter:
+class Solution:
     def __init__(self, string_list:list) -> None:
         self.__list = string_list
 
@@ -12,9 +12,11 @@ class StringsPrinter:
                 yield x.capitalize()
 
 def FilterStr(string:str):
-    for x in [int, None, float]:
+    for x in [int, float]:
         if SecureCheckType(string, x):
             return False
+    if string == "None":
+        return False
     return True
     
 def SecureCheckType(value:any, type:type):

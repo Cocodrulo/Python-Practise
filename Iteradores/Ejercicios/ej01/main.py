@@ -1,4 +1,4 @@
-from solucion import StringsPrinter as sol
+from solucion import Solution
 from template import StringsPrinter
 
 if __name__ == "__main__":
@@ -8,17 +8,25 @@ if __name__ == "__main__":
     results = []
 
     for i, x in enumerate(test):
+        print("============================")
+        print(f"Realizando test {i}")
+        print("============================")
+        print(x)
+        print()
+        res = []
+        index = 0
         try:
-            print("============================")
-            print(f"Realizando test {i}")
-            print("============================")
-            print()
-            solution = sol(x)
+            for s in Solution(x):
+                res.append(s)
             for s in StringsPrinter(x):
-                print(f"Valor: {s}")
-                results.append(s == next(solution))
-        except Exception:
+                print(s)
+                results.append(s == res[index])
+                index += 1
+        except Exception as excp:
+            print(excp)
             results.append(False)
 
+    print()
     resultados = results.count(True)
     print(f"Resultados: {resultados}/{len(results)}")
+    print(f"Nota: {resultados*10/len(results)}")
